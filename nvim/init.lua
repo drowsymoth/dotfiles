@@ -1,6 +1,3 @@
-require('options')
-require('lsp')
-
 -- Set the path where lazy.nvim will be installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
@@ -33,6 +30,8 @@ require("lazy").setup({
 })
 
 require('cmp_config')
+require('options')
+require('lsp')
 
 vim.opt.pumheight = 10
 vim.opt.pumwidth = 50
