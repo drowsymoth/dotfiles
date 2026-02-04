@@ -1,0 +1,23 @@
+[colors.primary]
+background = "#110542"  # Your primary deep purple-blue
+foreground = "#DEDEDE"  # Your white
+
+[colors.normal]
+black   = "#0B0B1A"     # Slightly darker than background
+red     = "#E06C75"     # Soft red, visible but not harsh
+green   = "#98C379"     # Light green for contrast
+yellow  = "#E5C07B"     # Warm yellow, readable on dark bg
+blue    = "#61AFEF"     # Calm blue, visible
+magenta = "#AB55A2"     # Your attention color
+cyan    = "#56B6C2"     # Teal/cyan for variety
+white   = "#DEDEDE"     # Your white
+
+[colors.bright]
+black   = "#4B4678"     # Medium gray-purple for bright black
+red     = "#FF7F7F"     # Brighter red for emphasis
+green   = "#B6E26D"     # Brighter green
+yellow  = "#FFD580"     # Brighter yellow
+blue    = "#7FC6FF"     # Brighter blue
+magenta = "#D58AD5"     # Brighter magenta, variation of attention
+cyan    = "#6FD3DF"     # Brighter cyan
+white   = "#FFFFFF"     # Pure white for max contrast
