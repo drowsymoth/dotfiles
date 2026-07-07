@@ -6,7 +6,11 @@ vim.keymap.set("n", "<leader>ff", function()
   MiniExtra.pickers.explorer()
 end)
 
-vim.keymap.set("n", "<leader>cc", "<cmd>nohlsearch<CR>")
+vim.keymap.set("n", "<leader>fb", function()
+  MiniPick.builtin.buffers()
+end)
+
+vim.keymap.set("n", "<leader>cc", "<Cmd>nohlsearch<CR>")
 
 vim.keymap.set({ "i", "s" }, "<Tab>", function()
   if vim.snippet.active({ direction = 1 }) then
@@ -15,3 +19,5 @@ vim.keymap.set({ "i", "s" }, "<Tab>", function()
     return "<Tab>"
   end
 end, { expr = true })
+
+vim.keymap.set({ "n", "t" }, "<A-t>", [[<Cmd>ToggleTerm size=10<CR>]])

@@ -54,3 +54,10 @@ MiniDeps.later(function()
     format_on_save = true,
   })
 end)
+
+MiniDeps.later(function()
+  MiniDeps.add({
+    source = "akinsho/toggleterm.nvim",
+  })
+  require("toggleterm").setup()
+end)
