@@ -61,3 +61,10 @@ MiniDeps.later(function()
   })
   require("toggleterm").setup()
 end)
+
+MiniDeps.later(function()
+  MiniDeps.add({
+    source = "vyfor/cord.nvim",
+  })
+  require("cord").setup()
+end)

@@ -1,4 +1,4 @@
-MiniDeps.later(function()
+MiniDeps.now(function()
   MiniDeps.add({
     source = "nvim-treesitter/nvim-treesitter",
   })
@@ -11,24 +11,40 @@ MiniDeps.later(function()
     "typst",
     "latex",
     "python",
+    "sql",
   })
-end)
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "c", "cpp", "rust", "lua", "typst", "latex", "python" },
-  callback = function()
-    vim.treesitter.start()
-  end,
-})
+  MiniDeps.add({
+    source = "neovim/nvim-lspconfig",
+  })
 
-MiniDeps.later(function()
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "c", "cpp", "rust", "lua", "typst", "latex", "python", "sql" },
+    callback = function()
+      vim.treesitter.start()
+    end,
+  })
+
   MiniDeps.add({
     source = "mason-org/mason.nvim",
   })
+  require("mason").setup()
+
+  vim.lsp.enable(
+    "clangd",
+    "rust_analyzer",
+    "tinymist",
+    "texlab",
+    "lua_ls",
+    "ruff",
+    "sqls"
+  )
+end)
+
+MiniDeps.later(function()
   MiniDeps.add({
     source = "WhoIsSethDaniel/mason-tool-installer.nvim",
   })
-  require("mason").setup()
   require("mason-tool-installer").setup({
     ensure_installed = {
       "clangd",
@@ -41,6 +57,7 @@ MiniDeps.later(function()
       "tree-sitter-cli",
       "typstyle",
       "ruff",
+      "sqls",
     },
     auto_update = true,
   })
@@ -48,50 +65,3 @@ MiniDeps.later(function()
     vim.cmd("MasonToolsInstall")
   end)
 end)
-
-vim.lsp.config("clangd", {
-  cmd = { "clangd" },
-  filetypes = { "c", "cpp" },
-  root_markers = { ".clangd", "compile_commands.json", ".git" },
-})
-vim.lsp.enable("clangd")
-
-vim.lsp.config("rust_analyzer", {
-  cmd = { "rust-analyzer" },
-  filetypes = { "rust" },
-  root_markers = { "Cargo.toml" },
-})
-vim.lsp.enable("rust_analyzer")
-
-vim.lsp.config("tinymist", {
-  cmd = { "tinymist" },
-  filetypes = { "typst" },
-})
-vim.lsp.enable("tinymist")
-
-vim.lsp.config("texlab", {
-  cmd = { "texlab" },
-  filetypes = { "latex" },
-})
-vim.lsp.enable("texlab")
-
-vim.lsp.config("lua_ls", {
-  cmd = { "lua-language-server" },
-  filetypes = { "lua" },
-  settings = {
-    Lua = {
-      diagnostics = { globals = { "vim" } },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-        checkThirdParty = false,
-      },
-    },
-  },
-})
-vim.lsp.enable("lua_ls")
-
-vim.lsp.config("ruff", {
-  cmd = { "ruff" },
-  filetypes = { "python" },
-})
-vim.lsp.enable("ruff")

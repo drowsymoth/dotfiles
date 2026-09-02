@@ -21,3 +21,10 @@ vim.keymap.set({ "i", "s" }, "<Tab>", function()
 end, { expr = true })
 
 vim.keymap.set({ "n", "t" }, "<A-t>", [[<Cmd>ToggleTerm size=10<CR>]])
+
+vim.keymap.set(
+  "n",
+  "<leader>e",
+  vim.diagnostic.open_float,
+  { desc = "Show diagnostic popup" }
+)
