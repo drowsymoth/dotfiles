@@ -30,15 +30,15 @@ MiniDeps.now(function()
   })
   require("mason").setup()
 
-  vim.lsp.enable(
+  vim.lsp.enable({
     "clangd",
     "rust_analyzer",
     "tinymist",
     "texlab",
     "lua_ls",
     "ruff",
-    "sqls"
-  )
+    "sqls",
+  })
 end)
 
 MiniDeps.later(function()
