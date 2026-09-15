@@ -68,3 +68,11 @@ MiniDeps.later(function()
   })
   require("cord").setup()
 end)
+
+MiniDeps.later(function()
+  MiniDeps.add({
+    source = "folke/todo-comments.nvim",
+    depends = { "nvim-lua/plenary.nvim" },
+  })
+  require("todo-comments").setup()
+end)

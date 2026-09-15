@@ -1,9 +1,11 @@
 vim.pack.add({ "https://github.com/nvim-mini/mini.nvim" })
+-- vim.pack.add({ "https://github.com/zenbones-theme/zenbones.nvim" })
 require("mini.deps").setup()
 
 MiniDeps.now(function()
   require("options")
-  vim.cmd.colorscheme("minispring")
+  require("colorscheme")
+  -- vim.cmd.colorscheme("minispring")
 end)
 
 require("mini")
