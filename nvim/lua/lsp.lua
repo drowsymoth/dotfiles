@@ -11,7 +11,6 @@ MiniDeps.now(function()
     "typst",
     "latex",
     "python",
-    "sql",
   })
 
   MiniDeps.add({
@@ -19,7 +18,7 @@ MiniDeps.now(function()
   })
 
   vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "c", "cpp", "rust", "lua", "typst", "latex", "python", "sql" },
+    pattern = { "c", "cpp", "rust", "lua", "typst", "latex", "python" },
     callback = function()
       vim.treesitter.start()
     end,
@@ -37,7 +36,6 @@ MiniDeps.now(function()
     "texlab",
     "lua_ls",
     "ruff",
-    "sqls",
   })
 end)
 
@@ -57,7 +55,6 @@ MiniDeps.later(function()
       "tree-sitter-cli",
       "typstyle",
       "ruff",
-      "sqls",
     },
     auto_update = true,
   })

@@ -1,7 +1,0 @@
-import:
-  - ~/.config/alacritty/theme.yml 
-font:
-  size: 18.0
-  normal:
-    family: JetBrains Mono
-    style: bold

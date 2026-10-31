@@ -20,7 +20,12 @@ vim.keymap.set({ "i", "s" }, "<Tab>", function()
   end
 end, { expr = true })
 
-vim.keymap.set({ "n", "t" }, "<A-t>", [[<Cmd>ToggleTerm size=10<CR>]])
+vim.keymap.set({ "n", "t" }, "<A-t>", [[<Cmd>ToggleTerm direction=float<CR>]])
+vim.keymap.set(
+  { "n", "t" },
+  "<A-r>",
+  [[<Cmd>!g++ -std=c++23 %<CR><Cmd>TermExec cmd="./a.out" direction=float<CR>]]
+)
 
 vim.keymap.set(
   "n",

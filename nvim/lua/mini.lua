@@ -1,7 +1,6 @@
 MiniDeps.later(function()
   require("mini.pairs").setup()
   require("mini.indentscope").setup()
-  require("mini.surround").setup()
   require("mini.icons").setup()
   require("mini.statusline").setup()
   MiniStatusline.section_location = function()

@@ -1,8 +1,9 @@
 MiniDeps.later(function()
   MiniDeps.add({
-    source = "stevearc/oil.nvim",
+    source = "MeanderingProgrammer/render-markdown.nvim",
+    depends = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" },
   })
-  require("oil").setup()
+  require("render-markdown")
 end)
 
 MiniDeps.later(function()
@@ -60,13 +61,6 @@ MiniDeps.later(function()
     source = "akinsho/toggleterm.nvim",
   })
   require("toggleterm").setup()
-end)
-
-MiniDeps.later(function()
-  MiniDeps.add({
-    source = "vyfor/cord.nvim",
-  })
-  require("cord").setup()
 end)
 
 MiniDeps.later(function()
