@@ -24,16 +24,37 @@ vim.keymap.set({ "n", "t" }, "<A-t>", [[<Cmd>ToggleTerm direction=float<CR>]])
 
 vim.keymap.set("n", "<A-r>", function()
   local file = vim.fn.expand("%:p")
+  local ext = vim.fn.expand("%:e")
   local output = "/tmp/" .. vim.fn.expand("%:t:r")
 
-  local cmd = string.format(
-    "g++ -std=c++23 %s -o %s && %s",
-    vim.fn.shellescape(file),
-    vim.fn.shellescape(output),
-    vim.fn.shellescape(output)
-  )
-  require("toggleterm").exec(cmd, 1, nil, nil, "float")
-end)
+  if file == "" then
+    vim.notify("No file to compile", vim.log.levels.ERROR)
+    return
+  end
+
+  if ext ~= "cpp" then
+    vim.notify("That is not a cpp file", vim.log.levels.ERROR)
+    return
+  end
+
+  local compile = {
+    "g++",
+    "-std=c++23",
+    file,
+    "-o",
+    output,
+  }
+
+  local result = vim.fn.system(compile)
+
+  if vim.v.shell_error ~= 0 then
+    vim.notify(result, vim.log.levels.ERROR)
+    return
+  end
+
+  local run = vim.fn.shellescape(output)
+  require("toggleterm").exec(run, 1, nil, nil, "float")
+end, { desc = "Compile and run C++" })
 
 vim.keymap.set(
   "n",
