@@ -1,4 +1,5 @@
 set -gx PATH $HOME/.cargo/bin $PATH
+set -g fish_greeting
 
 # General
 set -g fish_color_normal B4BDC3
