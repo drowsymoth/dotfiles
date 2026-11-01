@@ -13,5 +13,12 @@ fish -c 'fisher update'
 
 read -rp "Set Fish as your default shell? [y/N] " answer
 if [[ "$answer" =~ ^[Yy]$ ]]; then
-    chsh -s "$(command -v fish)"
+  FISH_PATH="/bin/fish"
+
+  if [[ ! -x "$FISH_PATH" ]]; then
+    echo "Fish executable not found at $FISH_PATH"
+    exit 1
+  fi
+
+  chsh -s "$FISH_PATH"
 fi
