@@ -60,7 +60,7 @@ MiniDeps.later(function()
   MiniDeps.add({
     source = "akinsho/toggleterm.nvim",
   })
-  require("toggleterm").setup()
+  require("toggleterm").setup({})
 end)
 
 MiniDeps.later(function()

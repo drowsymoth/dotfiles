@@ -33,6 +33,8 @@ vim.o.cursorline = true
 vim.o.termguicolors = true
 vim.o.completeopt = "menuone,noselect"
 
+vim.o.shell = "fish"
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "typst", "text", "gitcommit" },
   callback = function()

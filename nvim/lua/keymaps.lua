@@ -21,11 +21,19 @@ vim.keymap.set({ "i", "s" }, "<Tab>", function()
 end, { expr = true })
 
 vim.keymap.set({ "n", "t" }, "<A-t>", [[<Cmd>ToggleTerm direction=float<CR>]])
-vim.keymap.set(
-  { "n", "t" },
-  "<A-r>",
-  [[<Cmd>!g++ -std=c++23 %<CR><Cmd>TermExec cmd="./a.out" direction=float<CR>]]
-)
+
+vim.keymap.set("n", "<A-r>", function()
+  local file = vim.fn.expand("%:p")
+  local output = "/tmp/" .. vim.fn.expand("%:t:r")
+
+  local cmd = string.format(
+    "g++ -std=c++23 %s -o %s && %s",
+    vim.fn.shellescape(file),
+    vim.fn.shellescape(output),
+    vim.fn.shellescape(output)
+  )
+  require("toggleterm").exec(cmd, 1, nil, nil, "float")
+end)
 
 vim.keymap.set(
   "n",
