@@ -32,29 +32,28 @@ vim.keymap.set("n", "<A-r>", function()
     return
   end
 
-  if ext ~= "cpp" then
-    vim.notify("That is not a cpp file", vim.log.levels.ERROR)
-    return
+  if ext == "cpp" then
+    local compile = {
+      "g++",
+      "-std=c++23",
+      file,
+      "-o",
+      output,
+    }
+
+    local result = vim.fn.system(compile)
+
+    if vim.v.shell_error ~= 0 then
+      vim.notify(result, vim.log.levels.ERROR)
+      return
+    end
+
+    local run = vim.fn.shellescape(output)
+    require("toggleterm").exec(run, 1, nil, nil, "float")
+  else
+    vim.notify("That is non of supported files", vim.log.levels.ERROR)
   end
-
-  local compile = {
-    "g++",
-    "-std=c++23",
-    file,
-    "-o",
-    output,
-  }
-
-  local result = vim.fn.system(compile)
-
-  if vim.v.shell_error ~= 0 then
-    vim.notify(result, vim.log.levels.ERROR)
-    return
-  end
-
-  local run = vim.fn.shellescape(output)
-  require("toggleterm").exec(run, 1, nil, nil, "float")
-end, { desc = "Compile and run C++" })
+end, { desc = "Compile and run" })
 
 vim.keymap.set(
   "n",
