@@ -49,9 +49,13 @@ vim.keymap.set("n", "<A-r>", function()
     end
 
     local run = vim.fn.shellescape(output)
+    require("toggleterm").exec("", 1, nil, nil, "float")
+    require("toggleterm").exec("clear", 1, nil, nil, "float")
     require("toggleterm").exec(run, 1, nil, nil, "float")
   elseif ext == "py" then
     local run = string.format("python %s", file)
+    require("toggleterm").exec("", 1, nil, nil, "float")
+    require("toggleterm").exec("clear", 1, nil, nil, "float")
     require("toggleterm").exec(run, 1, nil, nil, "float")
   else
     vim.notify("That is non of supported files", vim.log.levels.ERROR)
