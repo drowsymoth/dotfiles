@@ -1,5 +1,6 @@
 set -gx PATH $HOME/.cargo/bin $PATH
 set -g fish_greeting
+set -gx SSH_AUTH_SOCK /home/moth/.ssh/agent/s.yPNIoGUmBZ.agent.PR9RvAwoYn
 
 # General
 set -g fish_color_normal B4BDC3
