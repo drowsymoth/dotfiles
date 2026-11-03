@@ -4,9 +4,7 @@ MiniDeps.later(function()
     depends = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" },
   })
   require("render-markdown")
-end)
 
-MiniDeps.later(function()
   MiniDeps.add({
     source = "saghen/blink.cmp",
     depends = { "rafamadriz/friendly-snippets" },
@@ -20,9 +18,7 @@ MiniDeps.later(function()
     },
     sources = { default = { "lsp", "path", "snippets", "buffer" } },
   })
-end)
 
-MiniDeps.later(function()
   MiniDeps.add({
     source = "stevearc/conform.nvim",
   })
@@ -54,19 +50,22 @@ MiniDeps.later(function()
     },
     format_on_save = true,
   })
-end)
 
-MiniDeps.later(function()
   MiniDeps.add({
     source = "akinsho/toggleterm.nvim",
   })
   require("toggleterm").setup({})
-end)
 
-MiniDeps.later(function()
   MiniDeps.add({
     source = "folke/todo-comments.nvim",
     depends = { "nvim-lua/plenary.nvim" },
   })
   require("todo-comments").setup()
+end)
+
+MiniDeps.now(function()
+  MiniDeps.add({
+    source = "chomosuke/typst-preview.nvim",
+  })
+  require("typst-preview")
 end)
